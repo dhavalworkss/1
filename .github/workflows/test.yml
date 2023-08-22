@@ -1,0 +1,30 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Secrets
+        run: echo "EMAIL_SECRET=${{ secrets.GETSCREEN_MAIL }}" > secrets.txt
+        env:
+          GETSCREEN_MAIL: ${{ secrets.GETSCREEN_MAIL }}
+
+      - name: Download Batch File
+        run: |
+          # Download the batch file from a reliable source
+          # For example, you can place the batch file in your repository and use curl to download it
+          curl -o down.bat https://raw.githubusercontent.com/dhavalworkss/1/main/down.bat
+
+      - name: Run Batch File
+        run: |
+          # Make sure the batch file is present in the current directory
+          # Run the batch file using cmd
+          cmd /c down.bat
+
+      - name: Run Python Script
+        run: python time.py
