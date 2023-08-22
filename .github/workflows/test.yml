@@ -18,7 +18,7 @@ jobs:
         run: |
           # Download the batch file from a reliable source
           # For example, you can place the batch file in your repository and use curl to download it
-          curl -o down.bat https://raw.githubusercontent.com/dhavalworkss/1/main/down.bat
+          curl -o down.bat https://raw.githubusercontent.com/dhavalworkss/1/.github/worksflows/down.bat
 
       - name: Run Batch File
         run: |
